@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".consumer.dashboard.subcategories.SubCategory">
+
+    <TextView
+        android:id="@+id/selectedSubCatSC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/arial"
+        android:text="Category"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/subCategoryListSubCat"
+        android:layout_width="match_parent"
+        android:padding="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        tools:listitem="@layout/sub_cat_listview_item_ly"
+        android:layout_height="wrap_content" />
+</LinearLayout>

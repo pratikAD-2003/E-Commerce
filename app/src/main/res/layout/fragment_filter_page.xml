@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_white"
+    android:orientation="vertical"
+    android:padding="@dimen/_6sdp"
+    android:theme="@style/Theme.MaterialComponents.DayNight.Bridge"
+    tools:context=".common.search.filter.FilterPage">
+
+    <ImageView
+        android:id="@+id/backFromFilterPage"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:contentDescription="TODO"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:tint="@color/orange" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:text="Filter"
+        android:textAllCaps="true"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/_12ssp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@color/grey" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/priceRangeLayoutBtnSheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:text="By Price Range"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey" />
+
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/priceSliderFilterPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:stepSize="500"
+                    android:value="150000"
+                    android:valueFrom="0"
+                    android:valueTo="250000"
+                    app:thumbColor="@color/orange"
+                    app:trackColorActive="@color/orange"
+                    app:trackColorInactive="@color/grey"
+                    app:values="@array/priceRange" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:text="By Rating"
+                android:textAllCaps="true"
+                android:textColor="@color/grey" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/fiveStarRatFilterPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    tools:ignore="UselessParent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/fiveStarImgFilterPage"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/grey_outlined"
+                        android:contentDescription="TODO"
+                        android:padding="@dimen/_3sdp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fourStarRatFilterPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    tools:ignore="UselessParent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/blank_star" />
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/fourStarImgFilterPage"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/grey_outlined"
+                        android:contentDescription="TODO"
+                        android:padding="@dimen/_3sdp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/threeStarRatFilterPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    tools:ignore="UselessParent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/blank_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/blank_star" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/threeStarImgFilterPage"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/grey_outlined"
+                        android:contentDescription="TODO"
+                        android:padding="@dimen/_3sdp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/twoStarRatFilterPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    tools:ignore="UselessParent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/blank_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/blank_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/blank_star" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/twoStarImgFilterPage"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/grey_outlined"
+                        android:contentDescription="TODO"
+                        android:padding="@dimen/_3sdp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/oneStarRatFilterPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    tools:ignore="UselessParent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/full_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/blank_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/blank_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/blank_star" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/blank_star" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/oneStarImgFilterPage"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/grey_outlined"
+                        android:contentDescription="TODO"
+                        android:padding="@dimen/_3sdp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@color/grey" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:text="By Brand"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/searchLyProductList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardElevation="@dimen/_2sdp">
+
+                    <EditText
+                        android:id="@+id/FilterPageBrandInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:fontFamily="@font/arial"
+                        android:gravity="center_vertical"
+                        android:hint="Search Here..."
+                        android:inputType="text"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:visibility="visible" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/brandRecyclerviewFilterPage"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:text="By Category"
+                android:textAllCaps="true"
+                android:textColor="@color/grey" />
+
+            <RelativeLayout
+                android:id="@+id/relevanceFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Relevance"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/relevanceImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/black_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/oval_red" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/elecFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Electronics"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/elecImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/fashionFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Fashion"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/fashionImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/homeAndFurFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Home &amp; Furniture"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/homeFurImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/beautyAndPersonalFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Beauty &amp; Personal Care"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/beautyAndPerImgFiltePage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/booksAndStaFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Books &amp; Stationery"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/booksAndStaImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/sportsFitOutFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Sports,Fitness &amp; Outdoors"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/sportFitOutImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/toysKidsFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Toys,Kids &amp; Baby Products"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/toysKidsImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/groceFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Groceries &amp; Essentials"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/groceImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/automotiveFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Automotive"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/automotiveImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/healthFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Health &amp; Nutrition"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/healthImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/gamingFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Gaming"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/gamingImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/travelAndLuggFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Travel &amp; Luggage"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/travelAndLuggImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/petSupFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Pet Supplies"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/petSupImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/jewelryFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Jewelry"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/jewelryImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/watchesAndAccFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/arial"
+                    android:text="Watches &amp; Accessories"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/watchesAndAccImgFilterPage"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/grey_outlined"
+                    android:contentDescription="TODO"
+                    android:padding="@dimen/_3sdp"/>
+            </RelativeLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/applyFilterBtnFilterPage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                app:cardBackgroundColor="@color/orange"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardElevation="@dimen/_2sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Apply"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

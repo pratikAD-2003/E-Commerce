@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/light_white"
+    tools:context=".consumer.wishlist.activities.WishListProductsFrag">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/myWishlistToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/orange"
+        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:title="My Wishlist"
+        app:titleTextColor="@color/white" />
+
+    <TextView
+        android:id="@+id/emptyWishListLayoutWishListPro"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:letterSpacing="0.05"
+        android:textSize="@dimen/_14ssp"
+        android:text="You wishlist is Empty"
+        android:fontFamily="@font/arial"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/wishListItemShimmerWishListProd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:shimmer_duration="800">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/seller_product_item_ly_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/seller_product_item_ly_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/seller_product_item_ly_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/seller_product_item_ly_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/seller_product_item_ly_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/wishListItemsRecyclerviewWishListProd"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/wishlist_item_ly"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_height="match_parent"/>
+</LinearLayout>

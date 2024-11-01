@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/partDash"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Dashboard" />
+
+    <item android:enabled="false"
+        android:title=""/>
+
+    <item
+        android:id="@+id/partProfile"
+        android:icon="@drawable/statics"
+        android:title="Statics" />
+</menu>
