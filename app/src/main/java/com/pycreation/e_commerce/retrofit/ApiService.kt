@@ -18,6 +18,7 @@ import com.pycreation.e_commerce.consumer.address.model.req.PostAddressReqModel
 import com.pycreation.e_commerce.consumer.address.model.req.RemoveAddressModel
 import com.pycreation.e_commerce.consumer.address.model.req.UpdateAddressReqModel
 import com.pycreation.e_commerce.consumer.address.model.res.AddressListModelResModel
+import com.pycreation.e_commerce.consumer.dashboard.sub_category.res.SubCategoryResModel
 import com.pycreation.e_commerce.consumer.models.User
 import com.pycreation.e_commerce.consumer.models.UserOtpModel
 import com.pycreation.e_commerce.consumer.orders.req.OrderByOrderIdReqModel
@@ -204,4 +205,7 @@ interface ApiService {
 
     @POST(APIs.GET_ORDER_BY_ORDER_ID)
     fun getOrderByOrderId(@Body orderByOrderIdReqModel: OrderByOrderIdReqModel): Call<OrderListModelRes?>?
+
+    @GET(APIs.GET_SUB_CATEGORIES)
+    fun getSubCategories(@Path("category") category: String): Call<SubCategoryResModel?>?
 }

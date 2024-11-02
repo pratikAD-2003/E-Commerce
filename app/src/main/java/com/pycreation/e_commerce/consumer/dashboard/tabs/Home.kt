@@ -12,18 +12,31 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.snackbar.Snackbar
 import com.pycreation.e_commerce.R
 import com.pycreation.e_commerce.common.adaptors.ImageSliderAdapter
+import com.pycreation.e_commerce.common.search.ProductList
 import com.pycreation.e_commerce.common.search.SearchProList
 import com.pycreation.e_commerce.consumer.dashboard.ConsumerDashboard
 import com.pycreation.e_commerce.consumer.dashboard.adaptors.HomeImageSliderAdapter
+import com.pycreation.e_commerce.consumer.dashboard.sub_category.adaptors.SubCategoryHomeAdapter
+import com.pycreation.e_commerce.consumer.dashboard.sub_category.res.SubCategoryResModel
 import com.pycreation.e_commerce.databinding.FragmentHomeBinding
+import com.pycreation.e_commerce.retrofit.ApiClient
+import com.pycreation.e_commerce.retrofit.ApiService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.imaginativeworld.oopsnointernet.callbacks.ConnectionCallback
+import org.imaginativeworld.oopsnointernet.snackbars.fire.NoInternetSnackbarFire
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import kotlin.math.abs
 
 private const val ARG_PARAM1 = "param1"
@@ -36,7 +49,7 @@ class Home : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private var autoSlideJob: Job? = null
     private var currentPage = 1
-    private lateinit var adapter : HomeImageSliderAdapter
+    private lateinit var adapter: HomeImageSliderAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,12 +64,19 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        setSubCategory(
+            binding.electronicsRecyclerviewHome,
+            binding.electronicsLayoutHome,
+            "Electronics"
+        )
+        setSubCategory(
+            binding.homeAndFurRecyclerviewHome,
+            binding.homeAndFurnitureLayoutHome,
+            "Home & Furniture"
+        )
+
         setImageAdapter(
             listOf(
-//                "http://192.168.96.145:3030/uploads/products/productImages_1729160151312.jpeg",
-//                "http://192.168.96.145:3030/uploads/products/productImages_1729088378975.jpeg",
-//                "http://192.168.96.145:3030/uploads/products/productImages_1729160151312.jpeg",
-//                "http://192.168.96.145:3030/uploads/products/productImages_1729088378975.jpeg"
                 resources.getDrawable(R.drawable.banner_3),
                 resources.getDrawable(R.drawable.banner_5),
                 resources.getDrawable(R.drawable.banner_3s),
@@ -73,6 +93,22 @@ class Home : Fragment() {
                 )
             )
         }
+
+        binding.mobilesHomeIcon.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("sub_Category", "Mobiles & Accessories")
+            val productListFrag = ProductList()
+            productListFrag.arguments = bundle
+            (activity as ConsumerDashboard?)?.navigateTo(productListFrag)
+        }
+
+        binding.laptopsHomeIcon.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("sub_Category", "Laptops & Computers")
+            val productListFrag = ProductList()
+            productListFrag.arguments = bundle
+            (activity as ConsumerDashboard?)?.navigateTo(productListFrag)
+        }
         return binding.root
     }
 
@@ -85,6 +121,50 @@ class Home : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun setSubCategory(recyclerView: RecyclerView, layout: LinearLayout, category: String) {
+        recyclerView.layoutManager =
+            GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.setItemViewCacheSize(4)
+        val apiService = ApiClient.getApiService()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                apiService?.getSubCategories(category)
+                    ?.enqueue(object : Callback<SubCategoryResModel?> {
+                        override fun onResponse(
+                            call: Call<SubCategoryResModel?>,
+                            response: Response<SubCategoryResModel?>
+                        ) {
+                            if (response.isSuccessful) {
+                                Log.d("SUB_CATE_ERROR+$category", response.body().toString())
+                                if (response.body() != null) {
+                                    layout.visibility = View.VISIBLE
+                                    val adapter =
+                                        SubCategoryHomeAdapter(
+                                            requireContext(),
+                                            response.body()!!
+                                        )
+                                    recyclerView.adapter = adapter
+                                }
+                            } else {
+                                layout.visibility = View.GONE
+                                Log.d("SUB_CATE_ERROR+$category", response.errorBody().toString())
+                            }
+                        }
+
+                        override fun onFailure(call: Call<SubCategoryResModel?>, t: Throwable) {
+                            Log.d("SUB_CATE_ERROR+$category", t.message.toString())
+                            layout.visibility = View.GONE
+                        }
+
+                    })
+            } catch (e: Exception) {
+                Log.d("SUB_CATE_ERROR+$category", e.message.toString())
+                layout.visibility = View.GONE
+            }
+        }
     }
 
     private fun setImageAdapter(images: List<Any>) {

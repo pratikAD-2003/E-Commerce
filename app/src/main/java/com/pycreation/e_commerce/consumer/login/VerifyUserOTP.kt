@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import com.pycreation.e_commerce.MyWidgets
 import com.pycreation.e_commerce.R
 import com.pycreation.e_commerce.UserSharedPref
@@ -17,6 +18,8 @@ import com.pycreation.e_commerce.admin.PartnerAuth
 import com.pycreation.e_commerce.admin.login.PartnerLogin
 import com.pycreation.e_commerce.consumer.UserAuth
 import com.pycreation.e_commerce.consumer.UserFirebase
+import com.pycreation.e_commerce.consumer.dashboard.ConsumerDashboard
+import com.pycreation.e_commerce.consumer.dashboard.tabs.Account
 import com.pycreation.e_commerce.consumer.models.User
 import com.pycreation.e_commerce.consumer.models.UserFirebaseModel
 import com.pycreation.e_commerce.consumer.models.UserOtpModel
@@ -57,7 +60,10 @@ class VerifyUserOTP : Fragment() {
         type = arguments?.getString("from")
 
         myActivity =
-            if (type.equals("user") || type.equals("register")) (activity as? UserAuth)!! else (activity as? PartnerAuth)!!
+            if (type.equals("user") || type.equals("register")) (activity as? UserAuth)!! else if (type.equals(
+                    "from_user_dash"
+                )
+            ) (activity as? ConsumerDashboard)!! else (activity as? PartnerAuth)!!
 
         if (email != null) {
             binding.emailTextUserAuth.text =
@@ -155,7 +161,7 @@ class VerifyUserOTP : Fragment() {
                             myActivity.dismissDialog()
                         }
                     })
-            } else if (type.equals("user") || type.equals("partner")) {
+            } else if (type.equals("user") || type.equals("partner") || type.equals("from_user_dash")) {
                 apiService.verifyEmailForgetPassword(user)!!
                     .enqueue(object : Callback<RegisterResponse?> {
                         override fun onResponse(
@@ -167,6 +173,15 @@ class VerifyUserOTP : Fragment() {
                                 myActivity.showError("Password has been changed!")
                                 if (type.equals("user")) {
                                     myActivity.navigateToWithoutStackTrace(LoginUser())
+                                } else if (type.equals("from_user_dash")) {
+                                    requireActivity().supportFragmentManager.popBackStack(
+                                        null,
+                                        FragmentManager.POP_BACK_STACK_INCLUSIVE
+                                    )
+                                    (activity as ConsumerDashboard?)?.setAccountIcon()
+                                    (activity as ConsumerDashboard?)?.navigateToWithoutStackTrace(
+                                        Account()
+                                    )
                                 } else {
                                     myActivity.navigateToWithoutStackTrace(PartnerLogin())
                                 }

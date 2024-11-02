@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.pycreation.e_commerce.R
 import com.pycreation.e_commerce.UserSharedPref
+import com.pycreation.e_commerce.common.ForgetPassword
 import com.pycreation.e_commerce.common.reviews.activities.ReviewListFrag
 import com.pycreation.e_commerce.consumer.address.activities.AddressList
 import com.pycreation.e_commerce.consumer.dashboard.ConsumerDashboard
@@ -57,7 +58,11 @@ class Account : Fragment() {
         }
 
         binding.changePasswordLyAccount.setOnClickListener {
-
+            val bundle = Bundle()
+            bundle.putString("type", "from_user_dash")
+            val forgetPassword = ForgetPassword()
+            forgetPassword.arguments = bundle
+            (activity as ConsumerDashboard?)?.navigateTo(forgetPassword)
         }
 
         binding.logoutBtnAccount.setOnClickListener {

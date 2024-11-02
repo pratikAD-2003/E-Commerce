@@ -12,6 +12,7 @@ import com.pycreation.e_commerce.R
 import com.pycreation.e_commerce.admin.PartnerAuth
 import com.pycreation.e_commerce.common.models.ForgetPassBodyModel
 import com.pycreation.e_commerce.consumer.UserAuth
+import com.pycreation.e_commerce.consumer.dashboard.ConsumerDashboard
 import com.pycreation.e_commerce.consumer.login.VerifyUserOTP
 import com.pycreation.e_commerce.consumer.models.User
 import com.pycreation.e_commerce.consumer.responseModels.RegisterResponse
@@ -49,7 +50,10 @@ class ForgetPassword : Fragment() {
 
         type = arguments?.getString("type")
         myActivity =
-            if (type.equals("user") || type.equals("register")) (activity as? UserAuth)!! else (activity as? PartnerAuth)!!
+            if (type.equals("user") || type.equals("register")) (activity as? UserAuth)!! else if (type.equals(
+                    "from_user_dash"
+                )
+            ) (activity as? ConsumerDashboard)!! else (activity as? PartnerAuth)!!
 
         binding.sendOtpBtnForgotPass.setOnClickListener {
             if (checkValid()) {
@@ -121,6 +125,8 @@ class ForgetPassword : Fragment() {
                                 bundle.putString("from", "user");
                             } else if (type.equals("partner")) {
                                 bundle.putString("from", "partner");
+                            }else if (type.equals("from_user_dash")){
+                                bundle.putString("from", "from_user_dash");
                             }
                             verifyUserOTP.arguments = bundle
                             myActivity.dismissDialog()

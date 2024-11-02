@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.pycreation.e_commerce.MyWidgets
 import com.pycreation.e_commerce.R
 import com.pycreation.e_commerce.admin.dashboard.PartnerDashFrag
@@ -23,6 +24,8 @@ import com.pycreation.e_commerce.consumer.dashboard.tabs.Explore
 import com.pycreation.e_commerce.consumer.dashboard.tabs.Home
 import com.pycreation.e_commerce.databinding.ActivityConsumerDashboardBinding
 import com.razorpay.PaymentResultListener
+import org.imaginativeworld.oopsnointernet.callbacks.ConnectionCallback
+import org.imaginativeworld.oopsnointernet.snackbars.fire.NoInternetSnackbarFire
 
 class ConsumerDashboard : MyWidgets(), PaymentResultListener {
     private lateinit var binding: ActivityConsumerDashboardBinding
@@ -78,6 +81,10 @@ class ConsumerDashboard : MyWidgets(), PaymentResultListener {
 
     fun setCartIcon(){
         binding.bottomNavViewPartnerDash.selectedItemId = R.id.cart
+    }
+
+    fun setAccountIcon(){
+        binding.bottomNavViewPartnerDash.selectedItemId = R.id.profile
     }
 
     override fun navigateTo(fragment: Fragment) {

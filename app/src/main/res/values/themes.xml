@@ -13,6 +13,12 @@
         <item name="color">@color/white</item>
     </style>
 
+    <style name="subCate" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">2dp</item>
+        <item name="color">@color/white</item>
+    </style>
+
     <style name="topRoundedCorner" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">6dp</item>

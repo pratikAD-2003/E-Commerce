@@ -64,5 +64,6 @@ dependencies {
     implementation (libs.gson)
     implementation(libs.shimmer)
     implementation (libs.checkout)
+    implementation (libs.oopsnointernet)
 
 }

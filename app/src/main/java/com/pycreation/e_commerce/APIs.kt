@@ -54,4 +54,7 @@ object APIs {
     const val GET_MY_ORDERS = "/cart/getOrderProducts/{userId}"
 
     const val GET_ORDER_BY_ORDER_ID = "/cart/getOrderByOrderId"
+
+    // sub category
+    const val GET_SUB_CATEGORIES = "/getAllSubCategories/{category}"
 }
