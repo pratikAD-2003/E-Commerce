@@ -10,11 +10,13 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.snackbar.Snackbar
 import com.pycreation.e_commerce.R
 import com.pycreation.e_commerce.common.adaptors.ImageSliderAdapter
@@ -64,6 +66,8 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        checkInternetConnection()
         setSubCategory(
             binding.electronicsRecyclerviewHome,
             binding.electronicsLayoutHome,
@@ -109,6 +113,18 @@ class Home : Fragment() {
             productListFrag.arguments = bundle
             (activity as ConsumerDashboard?)?.navigateTo(productListFrag)
         }
+
+        binding.watchesHomeIcon.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("sub_Category", "Watches")
+            val productListFrag = ProductList()
+            productListFrag.arguments = bundle
+            (activity as ConsumerDashboard?)?.navigateTo(productListFrag)
+        }
+
+        binding.retryHomeBtn.setOnClickListener {
+            checkInternetConnection()
+        }
         return binding.root
     }
 
@@ -123,7 +139,17 @@ class Home : Fragment() {
             }
     }
 
-    private fun setSubCategory(recyclerView: RecyclerView, layout: LinearLayout, category: String) {
+    private fun checkInternetConnection(){
+        if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
+            binding.internetLyHome.visibility = View.GONE
+            binding.homeFragLayout.visibility = View.VISIBLE
+        } else {
+            binding.internetLyHome.visibility = View.VISIBLE
+            binding.homeFragLayout.visibility = View.GONE
+        }
+    }
+
+    private fun setSubCategory(recyclerView: RecyclerView, layout: CardView, category: String) {
         recyclerView.layoutManager =
             GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         recyclerView.setHasFixedSize(true)
@@ -140,13 +166,19 @@ class Home : Fragment() {
                             if (response.isSuccessful) {
                                 Log.d("SUB_CATE_ERROR+$category", response.body().toString())
                                 if (response.body() != null) {
-                                    layout.visibility = View.VISIBLE
-                                    val adapter =
-                                        SubCategoryHomeAdapter(
-                                            requireContext(),
-                                            response.body()!!
-                                        )
-                                    recyclerView.adapter = adapter
+                                    if (response.body()!!.size != 0) {
+                                        layout.visibility = View.VISIBLE
+                                        val adapter =
+                                            SubCategoryHomeAdapter(
+                                                requireContext(),
+                                                response.body()!!
+                                            )
+                                        recyclerView.adapter = adapter
+                                    } else {
+                                        layout.visibility = View.GONE
+                                    }
+                                } else {
+                                    layout.visibility = View.GONE
                                 }
                             } else {
                                 layout.visibility = View.GONE

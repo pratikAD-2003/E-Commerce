@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.snackbar.Snackbar
 import com.pycreation.e_commerce.MyWidgets
 import com.pycreation.e_commerce.R
@@ -16,6 +17,7 @@ import com.pycreation.e_commerce.admin.dashboard.PartnerDashFrag
 import com.pycreation.e_commerce.admin.dashboard.PartnerStaticsFrag
 import com.pycreation.e_commerce.common.productdetails.ProductDetailed
 import com.pycreation.e_commerce.consumer.addToCart.activities.CheckoutPayment
+import com.pycreation.e_commerce.consumer.dashboard.sub_category.activities.SubCatList
 import com.pycreation.e_commerce.consumer.dashboard.subcategories.SubCategory
 import com.pycreation.e_commerce.consumer.dashboard.tabs.Account
 import com.pycreation.e_commerce.consumer.dashboard.tabs.Cart
@@ -30,19 +32,17 @@ import org.imaginativeworld.oopsnointernet.snackbars.fire.NoInternetSnackbarFire
 class ConsumerDashboard : MyWidgets(), PaymentResultListener {
     private lateinit var binding: ActivityConsumerDashboardBinding
 
-    var isPaymentSuccess: Boolean = false
+    private var isPaymentSuccess: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityConsumerDashboardBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.consumerDashFrameLayout, Home())
                 .commit()
         }
-
         binding.bottomNavViewPartnerDash.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
@@ -79,11 +79,11 @@ class ConsumerDashboard : MyWidgets(), PaymentResultListener {
         binding.bottomNavViewPartnerDash.selectedItemId = R.id.home
     }
 
-    fun setCartIcon(){
+    fun setCartIcon() {
         binding.bottomNavViewPartnerDash.selectedItemId = R.id.cart
     }
 
-    fun setAccountIcon(){
+    fun setAccountIcon() {
         binding.bottomNavViewPartnerDash.selectedItemId = R.id.profile
     }
 
@@ -112,6 +112,18 @@ class ConsumerDashboard : MyWidgets(), PaymentResultListener {
             .commit()
     }
 
+    fun onSubCategoryClicked(view: View) {
+        val bundle = Bundle()
+        bundle.putString("subCategory", view.tag.toString())
+        val fragment = SubCatList()
+        fragment.arguments = bundle
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.consumerDashFrameLayout, fragment)
+            .addToBackStack(null)  // Add to backstack so user can navigate back
+            .commit()
+    }
+
     override fun onPaymentSuccess(p0: String?) {
         isPaymentSuccess = true
         Log.d("PAYMENT_Status_main", "Success ${p0.toString()}")
@@ -126,7 +138,7 @@ class ConsumerDashboard : MyWidgets(), PaymentResultListener {
         return isPaymentSuccess
     }
 
-    fun resetPaymentStatus(){
+    fun resetPaymentStatus() {
         isPaymentSuccess = false
     }
 }

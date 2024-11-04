@@ -6,22 +6,22 @@
     android:layout_height="match_parent"
     android:background="@color/light_white"
     android:orientation="vertical"
-    tools:context=".consumer.orders.activities.MyOrders">
+    tools:context=".consumer.dashboard.sub_category.activities.SubCatList">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/myOrdersToolbar"
+        android:id="@+id/subCateListToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/orange"
         app:navigationIcon="@drawable/baseline_arrow_back_24"
-        app:title="My Orders"
+        app:title="Payment Options"
         app:titleTextColor="@color/white" />
 
     <RelativeLayout
-        android:id="@+id/internetLyMyOrders"
-        android:visibility="gone"
+        android:id="@+id/internetLySubCatList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,12 +76,12 @@
                 android:textSize="@dimen/_12ssp" />
 
             <LinearLayout
-                android:id="@+id/retryMyOrdersBtn"
+                android:id="@+id/retrySubCatListBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:gravity="center_vertical"
                 android:layout_marginEnd="@dimen/_4sdp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -92,68 +92,28 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14ssp" />
 
-
                 <ImageView
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginStart="@dimen/_4sdp"
                     android:contentDescription="TODO"
-                    app:tint="@color/black"
-                    android:src="@drawable/baseline_restart_alt_24" />
+                    android:src="@drawable/baseline_restart_alt_24"
+                    app:tint="@color/black" />
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>
 
+
     <LinearLayout
-        android:id="@+id/myOrdersLayout"
+        android:id="@+id/subCatListLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/myOrderPageShimmer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            app:shimmer_duration="800">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <include
-                    layout="@layout/my_orders_ly_item_shimmer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <include
-                    layout="@layout/my_orders_ly_item_shimmer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <include
-                    layout="@layout/my_orders_ly_item_shimmer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <include
-                    layout="@layout/my_orders_ly_item_shimmer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <include
-                    layout="@layout/my_orders_ly_item_shimmer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/orderRecyclerviewMyOrders"
+            android:id="@+id/subCatListRecyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp" />
     </LinearLayout>
 </LinearLayout>

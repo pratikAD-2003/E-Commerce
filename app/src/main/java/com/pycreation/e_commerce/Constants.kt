@@ -66,8 +66,7 @@ object Constants {
         "Gaming",
         "Travel & Luggage",
         "Pet Supplies",
-        "Jewelry",
-        "Watches & Accessories"
+        "Jewelry"
     )
 
     val electronicsCat = listOf(
@@ -78,7 +77,8 @@ object Constants {
         "Home Appliances",
         "Headphones & Speakers",
         "Smartwatches & Fitness Gadgets",
-        "Power Banks & Chargers"
+        "Power Banks & Chargers",
+        "Printers & Scanners"
     )
 
     val fashionCat = listOf(
@@ -87,8 +87,7 @@ object Constants {
         "Footwear (Men & Women)",
         "Watches",
         "Sunglasses & Eyewear",
-        "Bags, Wallets, and Belts",
-        "Jewelry & Accessories"
+        "Wallets, and Belts"
     )
 
     val homeAndFurnitureCat = listOf(
@@ -97,17 +96,14 @@ object Constants {
         "Lighting & Lamps",
         "Kitchenware",
         "Bedsheets & Curtains",
-        "Tools & Hardware",
-        "Home Improvement"
+        "Tools & Hardware"
     )
 
     val beautyAndPersonalCareCat = listOf(
         "Skincare",
         "Haircare",
         "Makeup",
-        "Fragrances & Deodorants",
-        "Grooming Appliances",
-        "Health & Wellness"
+        "Fragrances & Deodorants"
     )
 
     val booksAndStationeryCat = listOf(
@@ -115,7 +111,7 @@ object Constants {
         "School & Office Supplies",
         "Educational Books",
         "Art & Craft Supplies",
-        "E-books & Magazines"
+        "Magazines"
     )
 
     val sportFitnessOutdoorsCat = listOf(
@@ -129,8 +125,7 @@ object Constants {
     val toysKidsBabyProCat = listOf(
         "Toys & Games",
         "Clothing for Kids & Babies",
-        "Baby Care Essentials",
-        "School Bags & Accessories"
+        "Baby Care Essentials"
     )
 
     val groceriesAndEssentialsCat = listOf(
@@ -138,12 +133,11 @@ object Constants {
         "Snacks & Beverages",
         "Cooking Essentials",
         "Dairy Products",
-        "Cleaning & Household Supplies",
-        "Personal Hygiene Products"
+        "Cleaning & Household Supplies"
     )
 
     val automotiveCat = listOf(
-        "Car Accessories", "Motorcycle Accessories", "Vehicle Parts", "Car Care Products"
+        "Car Accessories", "Motorcycle Accessories"
     )
 
     val healthAndNutritionCat = listOf(
@@ -158,18 +152,14 @@ object Constants {
     )
 
     val travelAndLuggageCat = listOf(
-        "Suitcases & Travel Bags", "Backpacks & Rucksacks", "Travel Accessories", "Trolleys"
+        "Suitcases & Travel Bags", "Backpacks & Rucksacks"
     )
 
     val petSuppliesCat = listOf(
-        "Pet Food", "Pet Grooming", "Pet Toys & Accessories", "Pet Health & Hygiene Products"
+        "Pet Food", "Pet Toys & Accessories"
     )
 
     val jewelryCat = listOf(
         "Gold & Diamond Jewelry", "Fashion Jewelry", "Precious & Semi-Precious Stones"
-    )
-
-    val watchesAndAccessories = listOf(
-        "Men’s Watches", "Women’s Watches", "Smart Watches", "Fashion Accessories"
     )
 }

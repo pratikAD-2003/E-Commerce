@@ -65,5 +65,6 @@ dependencies {
     implementation(libs.shimmer)
     implementation (libs.checkout)
     implementation (libs.oopsnointernet)
-
+    implementation (libs.lottie)
+    implementation(libs.lottie.v520) // Ensure you're using the latest version
 }

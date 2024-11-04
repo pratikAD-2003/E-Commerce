@@ -683,10 +683,6 @@ class PartnerProductPostFrag : Fragment() {
                 return Constants.jewelryCat
             }
 
-            "Watches & Accessories" -> {
-                return Constants.watchesAndAccessories
-            }
-
             else -> return listOf()
         }
     }

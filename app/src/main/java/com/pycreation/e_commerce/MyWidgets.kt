@@ -1,6 +1,9 @@
 package com.pycreation.e_commerce
 
 import android.app.Dialog
+import android.content.Context
+import android.net.ConnectivityManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -65,17 +68,33 @@ open class MyWidgets : AppCompatActivity() {
         snackBar.show()
     }
 
-    open fun navigateTo(fragment : Fragment) {
+    open fun navigateTo(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.userAuthFrameLayout, fragment)
             .addToBackStack(null)  // Add to backstack so user can navigate back
             .commit()
     }
 
-    open fun navigateToWithoutStackTrace(fragment : Fragment) {
+    open fun navigateToWithoutStackTrace(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.userAuthFrameLayout, fragment)
             .commit()
     }
+
+    open fun isNetworkAvailable(): Boolean {
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        connectivityManager.let {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                val networkCapabilities = it.getNetworkCapabilities(it.activeNetwork)
+                return networkCapabilities != null
+            } else {
+                val networkInfo = it.activeNetworkInfo
+                return networkInfo != null && networkInfo.isConnected
+            }
+        }
+        return false
+    }
+
 
 }

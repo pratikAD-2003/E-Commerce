@@ -53,11 +53,16 @@ class WishListProductsFrag : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             requireActivity().supportFragmentManager.popBackStack()
         }
+        checkInternetConnection()
         setupActionBar()
         binding.wishListItemsRecyclerviewWishListProd.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         getWishListItems()
+
+        binding.retryMyWishlistBtn.setOnClickListener {
+
+        }
         return binding.root
     }
 
@@ -70,6 +75,16 @@ class WishListProductsFrag : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun checkInternetConnection(){
+        if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
+            binding.internetLyMyWishlist.visibility = View.GONE
+            binding.myWishlistLayout.visibility = View.VISIBLE
+        } else {
+            binding.internetLyMyWishlist.visibility = View.VISIBLE
+            binding.myWishlistLayout.visibility = View.GONE
+        }
     }
 
     private fun setupActionBar() {

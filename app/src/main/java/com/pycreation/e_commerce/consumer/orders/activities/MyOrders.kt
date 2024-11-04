@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pycreation.e_commerce.APIs
 import com.pycreation.e_commerce.R
 import com.pycreation.e_commerce.UserSharedPref
+import com.pycreation.e_commerce.consumer.dashboard.ConsumerDashboard
 import com.pycreation.e_commerce.consumer.orders.adaptors.MyOrdersAdapter
 import com.pycreation.e_commerce.consumer.orders.res.OrderListModelRes
 import com.pycreation.e_commerce.databinding.FragmentMyOrdersBinding
@@ -48,11 +49,16 @@ class MyOrders : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             requireActivity().supportFragmentManager.popBackStack()
         }
+        checkInternetConnection()
 
         binding.orderRecyclerviewMyOrders.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         setupActionBar()
         getMyOrders()
+
+        binding.retryMyOrdersBtn.setOnClickListener {
+
+        }
         return binding.root
     }
 
@@ -65,6 +71,16 @@ class MyOrders : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun checkInternetConnection(){
+        if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
+            binding.internetLyMyOrders.visibility = View.GONE
+            binding.myOrdersLayout.visibility = View.VISIBLE
+        } else {
+            binding.internetLyMyOrders.visibility = View.VISIBLE
+            binding.myOrdersLayout.visibility = View.GONE
+        }
     }
 
     private fun getMyOrders() {

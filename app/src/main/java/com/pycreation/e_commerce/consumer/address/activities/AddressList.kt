@@ -58,6 +58,7 @@ class AddressList : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             requireActivity().supportFragmentManager.popBackStack()
         }
+        checkInternetConnection()
         setupActionBar()
         binding.addressRecyclerviewAddresses.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -118,6 +119,10 @@ class AddressList : Fragment() {
         }
         getAddressList()
         setupSelectAddressType()
+
+        binding.retryAddressListBtn.setOnClickListener {
+
+        }
         return binding.root
     }
 
@@ -130,6 +135,16 @@ class AddressList : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun checkInternetConnection() {
+        if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
+            binding.internetLyAddressList.visibility = View.GONE
+            binding.addressListLayout.visibility = View.VISIBLE
+        } else {
+            binding.internetLyAddressList.visibility = View.VISIBLE
+            binding.addressListLayout.visibility = View.GONE
+        }
     }
 
 

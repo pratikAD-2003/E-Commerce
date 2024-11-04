@@ -72,7 +72,7 @@ class ProductList : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProductListBinding.inflate(inflater, container, false)
-
+        checkInternetConnection()
         val intentFilter = IntentFilter("BROADCAST_BOTTOM_SHEET")
         activity?.registerReceiver(dataReceiver, intentFilter, Context.RECEIVER_NOT_EXPORTED)
 
@@ -207,6 +207,9 @@ class ProductList : Fragment() {
             }
         }
 
+        binding.retryProductListBtn.setOnClickListener {
+
+        }
         return binding.root
     }
 
@@ -223,6 +226,26 @@ class ProductList : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun checkInternetConnection() {
+        if (arguments?.getString("sub_Category") != null) {
+            if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
+                binding.internetLyProductList.visibility = View.GONE
+                binding.productListLayout.visibility = View.VISIBLE
+            } else {
+                binding.internetLyProductList.visibility = View.VISIBLE
+                binding.productListLayout.visibility = View.GONE
+            }
+        } else {
+            if ((activity as SearchProList?)?.isNetworkAvailable() == true) {
+                binding.internetLyProductList.visibility = View.GONE
+                binding.productListLayout.visibility = View.VISIBLE
+            } else {
+                binding.internetLyProductList.visibility = View.VISIBLE
+                binding.productListLayout.visibility = View.GONE
+            }
+        }
     }
 
     private val dataReceiver = object : BroadcastReceiver() {

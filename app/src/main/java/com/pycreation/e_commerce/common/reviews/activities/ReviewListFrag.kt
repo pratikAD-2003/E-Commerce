@@ -13,6 +13,7 @@ import com.pycreation.e_commerce.R
 import com.pycreation.e_commerce.UserSharedPref
 import com.pycreation.e_commerce.common.reviews.adaptors.ReviewListAdapter
 import com.pycreation.e_commerce.common.reviews.models.ReviewWIthDetailsResModel
+import com.pycreation.e_commerce.consumer.dashboard.ConsumerDashboard
 import com.pycreation.e_commerce.databinding.FragmentReviewListBinding
 import com.pycreation.e_commerce.retrofit.ApiClient
 import com.pycreation.e_commerce.retrofit.ApiService
@@ -50,6 +51,7 @@ class ReviewListFrag : Fragment() {
         }
         binding.reviewListRecyclerview.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        checkInternetConnection()
         setupActionBar()
         getAllWrittenReview()
         return binding.root
@@ -65,6 +67,17 @@ class ReviewListFrag : Fragment() {
                 }
             }
     }
+
+    private fun checkInternetConnection() {
+        if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
+            binding.internetLyReviewList.visibility = View.GONE
+            binding.reviewListLayout.visibility = View.VISIBLE
+        } else {
+            binding.internetLyReviewList.visibility = View.VISIBLE
+            binding.reviewListLayout.visibility = View.GONE
+        }
+    }
+
 
     private fun getAllWrittenReview() {
         val apiClient = ApiClient.getApiService()

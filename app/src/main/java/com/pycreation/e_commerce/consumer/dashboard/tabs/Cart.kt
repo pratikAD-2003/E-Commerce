@@ -56,12 +56,18 @@ class Cart : Fragment() {
     ): View {
         binding = FragmentCartBinding.inflate(inflater, container, false)
 
+        checkInternetConnection()
+
         binding.cartRecyclerviewCartFrag.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         getCartProducts()
 
         binding.proceedToCheckoutBtnCartFrag.setOnClickListener {
             (activity as ConsumerDashboard?)?.navigateTo(PlacedOrder())
+        }
+
+        binding.retryCartBtn.setOnClickListener {
+
         }
         return binding.root
     }
@@ -75,6 +81,16 @@ class Cart : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun checkInternetConnection(){
+        if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
+            binding.internetLyCart.visibility = View.GONE
+            binding.cartFragLayout.visibility = View.VISIBLE
+        } else {
+            binding.internetLyCart.visibility = View.VISIBLE
+            binding.cartFragLayout.visibility = View.GONE
+        }
     }
 
     private fun increaseQuantity(productUid: String) {

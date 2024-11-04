@@ -125,11 +125,6 @@ class SubCategory : Fragment() {
             14 -> {
                 return Constants.jewelryCat
             }
-
-            15 -> {
-                return Constants.watchesAndAccessories
-            }
-
             else -> return listOf()
         }
     }
