@@ -73,7 +73,7 @@ class ProductDetailed : Fragment() {
         setProductData()
         getProductReviews(productDetail.productUid)
         getSpecificationsById(productDetail.productUid)
-        getBySellerID()
+        getBySellerID(productDetail.sellerUid)
 
         binding.saveBtnProDe.setOnClickListener {
             setupSaveToWishlistProduct()
@@ -84,12 +84,17 @@ class ProductDetailed : Fragment() {
         }
 
         binding.addToCartProDe.setOnClickListener {
-            if (isAlreadyInCart){
-                (activity as ProductLifeCycle?)?.startActivity(Intent(requireContext(),ConsumerDashboard::class.java))
+            if (isAlreadyInCart) {
+                (activity as ProductLifeCycle?)?.startActivity(
+                    Intent(
+                        requireContext(),
+                        ConsumerDashboard::class.java
+                    )
+                )
                 (activity as ProductLifeCycle?)?.finish()
 //                (activity as ConsumerDashboard?)?.navigateTo(Cart())
 //                (activity as ConsumerDashboard?)?.setCartIcon()
-            }else{
+            } else {
                 addToCartProduct(productDetail.productUid)
             }
         }
@@ -485,14 +490,14 @@ class ProductDetailed : Fragment() {
         }
     }
 
-    private fun getBySellerID() {
+    private fun getBySellerID(sellerUid: String) {
         binding.smallProductShimmerProDe.visibility = View.VISIBLE
         binding.smallProductShimmerProDe.startShimmer()
         binding.relatedRecyclerviewProDe.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val apiService = ApiClient.getApiService()
         CoroutineScope(Dispatchers.IO).launch {
-            apiService?.getProductsBySellerId(UserSharedPref(requireContext()).getToken())
+            apiService?.getProductsBySellerId(sellerUid)
                 ?.enqueue(object : Callback<ProductModel> {
                     override fun onResponse(
                         call: Call<ProductModel>,

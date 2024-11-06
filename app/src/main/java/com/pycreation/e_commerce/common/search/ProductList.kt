@@ -19,6 +19,7 @@ import com.pycreation.e_commerce.R
 import com.pycreation.e_commerce.admin.listening.adapter.ProductAdapterPAcc
 import com.pycreation.e_commerce.admin.models.productModel.Product
 import com.pycreation.e_commerce.admin.models.productModel.ProductModel
+import com.pycreation.e_commerce.common.productdetails.ProductLifeCycle
 import com.pycreation.e_commerce.common.search.bottomsheets.BottomSheet
 import com.pycreation.e_commerce.common.search.filter.FilterPage
 import com.pycreation.e_commerce.consumer.dashboard.ConsumerDashboard
@@ -205,6 +206,10 @@ class ProductList : Fragment() {
                 keyword = binding.keywordProductList.text.toString()
                 getProductFilter()
             }
+        }
+
+        binding.cartProductList.setOnClickListener {
+            (activity as SearchProList?)?.finish()
         }
 
         binding.retryProductListBtn.setOnClickListener {
