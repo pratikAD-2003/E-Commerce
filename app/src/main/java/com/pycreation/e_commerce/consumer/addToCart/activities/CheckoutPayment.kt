@@ -67,6 +67,7 @@ class CheckoutPayment : Fragment(), PaymentResultListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
         setupActionBar()
+        checkInternetConnection()
 
         val amount = arguments?.getString("amount")
         val cod = arguments?.getString("cod")
@@ -105,6 +106,10 @@ class CheckoutPayment : Fragment(), PaymentResultListener {
                 startPayment(amount)
             }
         }
+
+        binding.retryCheckOutBtn.setOnClickListener {
+
+        }
         return binding.root
     }
 
@@ -117,6 +122,18 @@ class CheckoutPayment : Fragment(), PaymentResultListener {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun checkInternetConnection() {
+        if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
+            binding.internetLyCheckoutPage.visibility = View.GONE
+            binding.checkOutLayout.visibility = View.VISIBLE
+            binding.testRazorPay.visibility = View.VISIBLE
+        } else {
+            binding.internetLyCheckoutPage.visibility = View.VISIBLE
+            binding.checkOutLayout.visibility = View.GONE
+            binding.testRazorPay.visibility = View.GONE
+        }
     }
 
     override fun onResume() {
@@ -146,7 +163,7 @@ class CheckoutPayment : Fragment(), PaymentResultListener {
                             call: Call<RegisterResponse?>,
                             response: Response<RegisterResponse?>
                         ) {
-                            if (response.isSuccessful) {
+                            if (isAdded && response.isSuccessful) {
                                 (activity as ConsumerDashboard?)?.dismissDialog()
                                 (activity as ConsumerDashboard?)?.showError("Order Placed Successfully!")
                                 (activity as ConsumerDashboard?)?.resetPaymentStatus()

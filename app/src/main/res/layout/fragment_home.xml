@@ -49,9 +49,9 @@
 
     <RelativeLayout
         android:id="@+id/internetLyHome"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,8 +110,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:gravity="center_vertical"
                 android:layout_marginEnd="@dimen/_4sdp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -128,8 +128,8 @@
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginStart="@dimen/_4sdp"
                     android:contentDescription="TODO"
-                    app:tint="@color/black"
-                    android:src="@drawable/baseline_restart_alt_24" />
+                    android:src="@drawable/baseline_restart_alt_24"
+                    app:tint="@color/black" />
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>
@@ -704,7 +704,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:cardBackgroundColor="#FEF9D9"
                 app:cardElevation="@dimen/_2sdp">
 
@@ -745,66 +745,28 @@
                             app:tint="@color/white" />
                     </RelativeLayout>
 
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/electronicShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/electronicsRecyclerviewHome"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:paddingStart="@dimen/_5sdp"
-                        android:paddingEnd="@dimen/_5sdp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/homeAndFurnitureLayoutHome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:layout_marginBottom="@dimen/_4sdp"
-                android:visibility="gone"
-                app:cardBackgroundColor="#C6E7FF"
-                app:cardElevation="@dimen/_2sdp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_4sdp"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_marginTop="@dimen/_5sdp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginTop="@dimen/_2sdp"
-                            android:fontFamily="@font/arial_bold"
-                            android:letterSpacing="0.06"
-                            android:text="Home &amp; Furniture"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12ssp" />
-
-                        <ImageView
-                            android:layout_width="@dimen/_18sdp"
-                            android:layout_height="@dimen/_18sdp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="@dimen/_2sdp"
-                            android:layout_marginEnd="@dimen/_8sdp"
-                            android:background="@drawable/oval_red"
-                            android:contentDescription="TODO"
-                            android:onClick="onSubCategoryClicked"
-                            android:src="@drawable/baseline_keyboard_arrow_right_24"
-                            android:tag="2"
-                            app:tint="@color/white" />
-                    </RelativeLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/homeAndFurRecyclerviewHome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
@@ -819,7 +781,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:cardBackgroundColor="#FFDDAE"
                 app:cardElevation="@dimen/_2sdp">
 
@@ -856,11 +818,31 @@
                             android:contentDescription="TODO"
                             android:onClick="onSubCategoryClicked"
                             android:src="@drawable/baseline_keyboard_arrow_right_24"
-                            android:tag="3"
+                            android:tag="2"
                             app:tint="@color/white" />
                     </RelativeLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/fashionShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/fashionRecyclerviewHome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp" />
@@ -869,12 +851,88 @@
 
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/homeAndFurnitureLayoutHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:visibility="visible"
+                app:cardBackgroundColor="#C6E7FF"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/arial_bold"
+                            android:letterSpacing="0.06"
+                            android:text="Home &amp; Furniture"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/oval_red"
+                            android:contentDescription="TODO"
+                            android:onClick="onSubCategoryClicked"
+                            android:src="@drawable/baseline_keyboard_arrow_right_24"
+                            android:tag="3"
+                            app:tint="@color/white" />
+                    </RelativeLayout>
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/homeAndFurShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/homeAndFurRecyclerviewHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_5sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/beautyAndPerLayoutHome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:visibility="gone"
                 app:cardBackgroundColor="#E7CCCC"
                 app:cardElevation="@dimen/_2sdp">
 
@@ -915,7 +973,29 @@
                             app:tint="@color/white" />
                     </RelativeLayout>
 
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/beautyShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/beautyRecyclerviewHOme"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp" />
@@ -928,7 +1008,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:visibility="gone"
                 app:cardBackgroundColor="#91DDCF"
                 app:cardElevation="@dimen/_2sdp">
 
@@ -965,11 +1044,33 @@
                             android:contentDescription="TODO"
                             android:onClick="onSubCategoryClicked"
                             android:src="@drawable/baseline_keyboard_arrow_right_24"
-                            android:tag="5"
+                            android:tag="6"
                             app:tint="@color/white" />
                     </RelativeLayout>
 
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/sportsShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/sportsRecyclerviewHome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp" />
@@ -982,7 +1083,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:visibility="gone"
                 app:cardBackgroundColor="#B0EBB4"
                 app:cardElevation="@dimen/_2sdp">
 
@@ -1019,11 +1119,31 @@
                             android:contentDescription="TODO"
                             android:onClick="onSubCategoryClicked"
                             android:src="@drawable/baseline_keyboard_arrow_right_24"
-                            android:tag="6"
+                            android:tag="7"
                             app:tint="@color/white" />
                     </RelativeLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/toysShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/toysRecyclerviewHome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp" />
@@ -1036,7 +1156,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_15sdp"
-                android:visibility="gone"
                 app:cardBackgroundColor="#CAF4FF"
                 app:cardElevation="@dimen/_2sdp">
 
@@ -1073,11 +1192,542 @@
                             android:contentDescription="TODO"
                             android:onClick="onSubCategoryClicked"
                             android:src="@drawable/baseline_keyboard_arrow_right_24"
-                            android:tag="7"
+                            android:tag="12"
                             app:tint="@color/white" />
                     </RelativeLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/travelShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/travelAndLagRecyclerviewHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/booksAndStaLayoutHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                app:cardBackgroundColor="#91DDCF"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/arial_bold"
+                            android:letterSpacing="0.06"
+                            android:text="Books &amp; Stationery"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/oval_red"
+                            android:contentDescription="TODO"
+                            android:onClick="onSubCategoryClicked"
+                            android:src="@drawable/baseline_keyboard_arrow_right_24"
+                            android:tag="5"
+                            app:tint="@color/white" />
+                    </RelativeLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/booksShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/booksAndStaRecyclerviewHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gamingLayoutHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                app:cardBackgroundColor="#B0EBB4"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/arial_bold"
+                            android:letterSpacing="0.06"
+                            android:text="Beast Gaming"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/oval_red"
+                            android:contentDescription="TODO"
+                            android:onClick="onSubCategoryClicked"
+                            android:src="@drawable/baseline_keyboard_arrow_right_24"
+                            android:tag="11"
+                            app:tint="@color/white" />
+                    </RelativeLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/gamingShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/gamingRecyclerviewHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/groceLayoutHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                app:cardBackgroundColor="#E7CCCC"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/arial_bold"
+                            android:letterSpacing="0.06"
+                            android:text="Groceries &amp; Essentials"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/oval_red"
+                            android:contentDescription="TODO"
+                            android:onClick="onSubCategoryClicked"
+                            android:src="@drawable/baseline_keyboard_arrow_right_24"
+                            android:tag="8"
+                            app:tint="@color/white" />
+                    </RelativeLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/groceryShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/groceryRecyclerviewHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/healthLayoutHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                app:cardBackgroundColor="#B0EBB4"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/arial_bold"
+                            android:letterSpacing="0.06"
+                            android:text="Health &amp; Nutrition"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/oval_red"
+                            android:contentDescription="TODO"
+                            android:onClick="onSubCategoryClicked"
+                            android:src="@drawable/baseline_keyboard_arrow_right_24"
+                            android:tag="10"
+                            app:tint="@color/white" />
+                    </RelativeLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/healthShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/healthRecyclerviewHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/jewelryLayoutHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                app:cardBackgroundColor="#E7CCCC"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/arial_bold"
+                            android:letterSpacing="0.06"
+                            android:text="Jewelry"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/oval_red"
+                            android:contentDescription="TODO"
+                            android:onClick="onSubCategoryClicked"
+                            android:src="@drawable/baseline_keyboard_arrow_right_24"
+                            android:tag="14"
+                            app:tint="@color/white" />
+                    </RelativeLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/jeweleryShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/jewelryRecyclerviewHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/petSupLayoutHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                app:cardBackgroundColor="#B0EBB4"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/arial_bold"
+                            android:letterSpacing="0.06"
+                            android:text="Pet Supplies"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/oval_red"
+                            android:contentDescription="TODO"
+                            android:onClick="onSubCategoryClicked"
+                            android:src="@drawable/baseline_keyboard_arrow_right_24"
+                            android:tag="13"
+                            app:tint="@color/white" />
+                    </RelativeLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/petSupShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/petSupRecyclerviewHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/autoMotiveLayoutHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                app:cardBackgroundColor="#E7CCCC"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/arial_bold"
+                            android:letterSpacing="0.06"
+                            android:text="Automotive"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/oval_red"
+                            android:contentDescription="TODO"
+                            android:onClick="onSubCategoryClicked"
+                            android:src="@drawable/baseline_keyboard_arrow_right_24"
+                            android:tag="9"
+                            app:tint="@color/white" />
+                    </RelativeLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/automotiveShimmerLayoutHome"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/autoMotiveRecyclerviewHome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp" />

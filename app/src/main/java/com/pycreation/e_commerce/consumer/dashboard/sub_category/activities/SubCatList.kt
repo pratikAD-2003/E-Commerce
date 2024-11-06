@@ -92,8 +92,68 @@ class SubCatList : Fragment() {
             }
 
             "2" -> {
+                cat = "Fashion"
+                (activity as AppCompatActivity).supportActionBar?.title = "Trending Fashion"
+            }
+
+            "3" -> {
                 cat = "Home & Furniture"
                 (activity as AppCompatActivity).supportActionBar?.title = "Home & Furniture"
+            }
+
+            "4" -> {
+                cat = "Beauty & Personal Care"
+                (activity as AppCompatActivity).supportActionBar?.title = "Beauty & Personal Care"
+            }
+
+            "5" -> {
+                cat = "Books & Stationery"
+                (activity as AppCompatActivity).supportActionBar?.title = "Books & Stationery"
+            }
+
+            "6" -> {
+                cat = "Sports,Fitness & Outdoors"
+                (activity as AppCompatActivity).supportActionBar?.title =
+                    "Sports,Fitness & Outdoors"
+            }
+
+            "7" -> {
+                cat = "Toys,Kids & Baby Products"
+                (activity as AppCompatActivity).supportActionBar?.title =
+                    "Toys,Kids & Baby Products"
+            }
+
+            "12" -> {
+                cat = "Travel & Luggage"
+                (activity as AppCompatActivity).supportActionBar?.title = "Travel & Luggage"
+            }
+
+            "11" -> {
+                cat = "Gaming"
+                (activity as AppCompatActivity).supportActionBar?.title = "Beast Gaming"
+            }
+
+            "8" -> {
+                cat = "Groceries & Essentials"
+                (activity as AppCompatActivity).supportActionBar?.title = "Groceries & Essentials"
+            }
+
+            "10" -> {
+                cat = "Health & Nutrition"
+                (activity as AppCompatActivity).supportActionBar?.title = "Health & Nutrition"
+            }
+
+            "14" -> {
+                cat = "Jewelry"
+                (activity as AppCompatActivity).supportActionBar?.title = "Jewelry"
+            }
+            "13" -> {
+                cat = "Pet Supplies"
+                (activity as AppCompatActivity).supportActionBar?.title = "Pet Supplies"
+            }
+            "9" -> {
+                cat = "Automotive"
+                (activity as AppCompatActivity).supportActionBar?.title = "Automotive"
             }
         }
         if (cat != "null") {
@@ -102,6 +162,8 @@ class SubCatList : Fragment() {
     }
 
     private fun setSubCategory(recyclerView: RecyclerView, category: String) {
+        binding.subCateShimmerLayoutSubCatList.visibility = View.VISIBLE
+        binding.subCateShimmerLayoutSubCatList.startShimmer()
         recyclerView.layoutManager =
             GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         recyclerView.setHasFixedSize(true)
@@ -115,7 +177,9 @@ class SubCatList : Fragment() {
                             call: Call<SubCategoryResModel?>,
                             response: Response<SubCategoryResModel?>
                         ) {
-                            if (response.isSuccessful) {
+                            if (isAdded && response.isSuccessful) {
+                                binding.subCateShimmerLayoutSubCatList.visibility = View.GONE
+                                binding.subCateShimmerLayoutSubCatList.stopShimmer()
                                 Log.d("SUB_CATE_ERROR+$category", response.body().toString())
                                 if (response.body() != null) {
                                     val adapter =
@@ -126,16 +190,22 @@ class SubCatList : Fragment() {
                                     recyclerView.adapter = adapter
                                 }
                             } else {
+                                binding.subCateShimmerLayoutSubCatList.visibility = View.GONE
+                                binding.subCateShimmerLayoutSubCatList.stopShimmer()
                                 Log.d("SUB_CATE_ERROR+$category", response.errorBody().toString())
                             }
                         }
 
                         override fun onFailure(call: Call<SubCategoryResModel?>, t: Throwable) {
+                            binding.subCateShimmerLayoutSubCatList.visibility = View.GONE
+                            binding.subCateShimmerLayoutSubCatList.stopShimmer()
                             Log.d("SUB_CATE_ERROR+$category", t.message.toString())
                         }
 
                     })
             } catch (e: Exception) {
+                binding.subCateShimmerLayoutSubCatList.visibility = View.GONE
+                binding.subCateShimmerLayoutSubCatList.stopShimmer()
                 Log.d("SUB_CATE_ERROR+$category", e.message.toString())
             }
         }

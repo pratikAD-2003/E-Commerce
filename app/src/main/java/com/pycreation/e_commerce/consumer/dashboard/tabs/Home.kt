@@ -1,7 +1,10 @@
 package com.pycreation.e_commerce.consumer.dashboard.tabs
 
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,14 +15,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.airbnb.lottie.LottieAnimationView
-import com.google.android.material.snackbar.Snackbar
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.pycreation.e_commerce.R
-import com.pycreation.e_commerce.common.adaptors.ImageSliderAdapter
 import com.pycreation.e_commerce.common.search.ProductList
 import com.pycreation.e_commerce.common.search.SearchProList
 import com.pycreation.e_commerce.consumer.dashboard.ConsumerDashboard
@@ -28,14 +28,11 @@ import com.pycreation.e_commerce.consumer.dashboard.sub_category.adaptors.SubCat
 import com.pycreation.e_commerce.consumer.dashboard.sub_category.res.SubCategoryResModel
 import com.pycreation.e_commerce.databinding.FragmentHomeBinding
 import com.pycreation.e_commerce.retrofit.ApiClient
-import com.pycreation.e_commerce.retrofit.ApiService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.imaginativeworld.oopsnointernet.callbacks.ConnectionCallback
-import org.imaginativeworld.oopsnointernet.snackbars.fire.NoInternetSnackbarFire
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -53,6 +50,21 @@ class Home : Fragment() {
     private var currentPage = 1
     private lateinit var adapter: HomeImageSliderAdapter
 
+    private var electronicRecyclerviewLoaded = false
+    private var fashionRecyclerviewLoaded = false
+    private var homeRecyclerviewLoaded = false
+    private var beautyRecyclerviewLoaded = false
+    private var sportsRecyclerviewLoaded = false
+    private var toysRecyclerviewLoaded = false
+    private var travelRecyclerviewLoaded = false
+    private var booksRecyclerviewLoaded = false
+    private var gamingRecyclerviewLoaded = false
+    private var groceryRecyclerviewLoaded = false
+    private var healthRecyclerviewLoaded = false
+    private var jeweleryRecyclerviewLoaded = false
+    private var petSupRecyclerviewLoaded = false
+    private var automotiveRecyclerviewLoaded = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -62,8 +74,7 @@ class Home : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
@@ -71,12 +82,8 @@ class Home : Fragment() {
         setSubCategory(
             binding.electronicsRecyclerviewHome,
             binding.electronicsLayoutHome,
-            "Electronics"
-        )
-        setSubCategory(
-            binding.homeAndFurRecyclerviewHome,
-            binding.homeAndFurnitureLayoutHome,
-            "Home & Furniture"
+            "Electronics",
+            binding.electronicShimmerLayoutHome
         )
 
         setImageAdapter(
@@ -92,8 +99,7 @@ class Home : Fragment() {
         binding.searchBarHome.setOnClickListener {
             (activity as ConsumerDashboard?)?.startActivity(
                 Intent(
-                    requireContext(),
-                    SearchProList::class.java
+                    requireContext(), SearchProList::class.java
                 )
             )
         }
@@ -125,21 +131,155 @@ class Home : Fragment() {
         binding.retryHomeBtn.setOnClickListener {
             checkInternetConnection()
         }
+
+        binding.homeFragLayout.viewTreeObserver.addOnScrollChangedListener {
+            if (isViewVisible(binding.fashionLayoutHome) && !fashionRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.fashionRecyclerviewHome,
+                    binding.fashionLayoutHome,
+                    "Fashion",
+                    binding.fashionShimmerLayoutHome
+                )
+                fashionRecyclerviewLoaded = true
+            }
+
+            if (isViewVisible(binding.homeAndFurnitureLayoutHome) && !homeRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.homeAndFurRecyclerviewHome,
+                    binding.homeAndFurnitureLayoutHome,
+                    "Home & Furniture",
+                    binding.homeAndFurShimmerLayoutHome
+                )
+                homeRecyclerviewLoaded = true
+            }
+
+            if (isViewVisible(binding.beautyAndPerLayoutHome) && !beautyRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.beautyRecyclerviewHOme,
+                    binding.beautyAndPerLayoutHome,
+                    "Beauty & Personal Care",
+                    binding.beautyShimmerLayoutHome
+                )
+                beautyRecyclerviewLoaded = true
+            }
+
+            if (isViewVisible(binding.sportsFitnessLayoutHome) && !sportsRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.sportsRecyclerviewHome,
+                    binding.sportsFitnessLayoutHome,
+                    "Sports,Fitness & Outdoors",
+                    binding.sportsShimmerLayoutHome
+                )
+                sportsRecyclerviewLoaded = true
+            }
+            if (isViewVisible(binding.toysKidsBabyLayoutHome) && !toysRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.toysRecyclerviewHome,
+                    binding.toysKidsBabyLayoutHome,
+                    "Toys,Kids & Baby Products",
+                    binding.toysShimmerLayoutHome
+                )
+                toysRecyclerviewLoaded = true
+            }
+
+            if (isViewVisible(binding.travelAndLuggageLayoutHome) && !travelRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.travelAndLagRecyclerviewHome,
+                    binding.travelAndLuggageLayoutHome,
+                    "Travel & Luggage",
+                    binding.travelShimmerLayoutHome
+                )
+                travelRecyclerviewLoaded = true
+            }
+            if (isViewVisible(binding.booksAndStaLayoutHome) && !booksRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.booksAndStaRecyclerviewHome,
+                    binding.booksAndStaLayoutHome,
+                    "Books & Stationery",
+                    binding.booksShimmerLayoutHome
+                )
+                booksRecyclerviewLoaded = true
+            }
+            if (isViewVisible(binding.gamingLayoutHome) && !gamingRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.gamingRecyclerviewHome,
+                    binding.gamingLayoutHome,
+                    "Gaming",
+                    binding.gamingShimmerLayoutHome
+                )
+                gamingRecyclerviewLoaded = true
+            }
+
+            if (isViewVisible(binding.groceLayoutHome) && !groceryRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.groceryRecyclerviewHome,
+                    binding.groceLayoutHome,
+                    "Groceries & Essentials",
+                    binding.groceryShimmerLayoutHome
+                )
+                groceryRecyclerviewLoaded = true
+            }
+
+            if (isViewVisible(binding.healthLayoutHome) && !healthRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.healthRecyclerviewHome,
+                    binding.healthLayoutHome,
+                    "Health & Nutrition",
+                    binding.healthShimmerLayoutHome
+                )
+                healthRecyclerviewLoaded = true
+            }
+
+            if (isViewVisible(binding.jewelryLayoutHome) && !jeweleryRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.jewelryRecyclerviewHome,
+                    binding.jewelryLayoutHome,
+                    "Jewelry",
+                    binding.jeweleryShimmerLayoutHome
+                )
+                jeweleryRecyclerviewLoaded = true
+            }
+
+            if (isViewVisible(binding.petSupLayoutHome) && !petSupRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.petSupRecyclerviewHome,
+                    binding.petSupLayoutHome,
+                    "Pet Supplies",
+                    binding.petSupShimmerLayoutHome
+                )
+                petSupRecyclerviewLoaded = true
+            }
+            if (isViewVisible(binding.autoMotiveLayoutHome) && !automotiveRecyclerviewLoaded) {
+                setSubCategory(
+                    binding.autoMotiveRecyclerviewHome,
+                    binding.autoMotiveLayoutHome,
+                    "Automotive",
+                    binding.automotiveShimmerLayoutHome
+                )
+                automotiveRecyclerviewLoaded = true
+            }
+        }
         return binding.root
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Home().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        fun newInstance(param1: String, param2: String) = Home().apply {
+            arguments = Bundle().apply {
+                putString(ARG_PARAM1, param1)
+                putString(ARG_PARAM2, param2)
             }
+        }
     }
 
-    private fun checkInternetConnection(){
+    private fun isViewVisible(view: View): Boolean {
+        val scrollBounds = Rect()
+        binding.homeFragLayout.getHitRect(scrollBounds)
+        return view.getLocalVisibleRect(scrollBounds)
+    }
+
+
+    private fun checkInternetConnection() {
         if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
             binding.internetLyHome.visibility = View.GONE
             binding.homeFragLayout.visibility = View.VISIBLE
@@ -149,7 +289,15 @@ class Home : Fragment() {
         }
     }
 
-    private fun setSubCategory(recyclerView: RecyclerView, layout: CardView, category: String) {
+    private fun setSubCategory(
+        recyclerView: RecyclerView,
+        layout: CardView,
+        category: String,
+        shimmerFrameLayout: ShimmerFrameLayout
+    ) {
+//        Log.d("CHECK_CATEGORY_LOADED", category)
+        shimmerFrameLayout.visibility = View.VISIBLE
+        shimmerFrameLayout.startShimmer()
         recyclerView.layoutManager =
             GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         recyclerView.setHasFixedSize(true)
@@ -163,36 +311,46 @@ class Home : Fragment() {
                             call: Call<SubCategoryResModel?>,
                             response: Response<SubCategoryResModel?>
                         ) {
-                            if (response.isSuccessful) {
-                                Log.d("SUB_CATE_ERROR+$category", response.body().toString())
+                            if (isAdded && response.isSuccessful) {
                                 if (response.body() != null) {
                                     if (response.body()!!.size != 0) {
-                                        layout.visibility = View.VISIBLE
-                                        val adapter =
-                                            SubCategoryHomeAdapter(
-                                                requireContext(),
-                                                response.body()!!
+                                        Handler(Looper.getMainLooper()).postDelayed({
+                                            shimmerFrameLayout.visibility = View.GONE
+                                            shimmerFrameLayout.stopShimmer()
+                                            val adapter = SubCategoryHomeAdapter(
+                                                requireContext(), response.body()!!
                                             )
-                                        recyclerView.adapter = adapter
+                                            recyclerView.adapter = adapter
+                                        }, 1000)
                                     } else {
+                                        shimmerFrameLayout.visibility = View.GONE
+                                        shimmerFrameLayout.stopShimmer()
                                         layout.visibility = View.GONE
                                     }
                                 } else {
+                                    shimmerFrameLayout.visibility = View.GONE
+                                    shimmerFrameLayout.stopShimmer()
                                     layout.visibility = View.GONE
                                 }
                             } else {
+                                shimmerFrameLayout.visibility = View.GONE
+                                shimmerFrameLayout.stopShimmer()
                                 layout.visibility = View.GONE
                                 Log.d("SUB_CATE_ERROR+$category", response.errorBody().toString())
                             }
                         }
 
                         override fun onFailure(call: Call<SubCategoryResModel?>, t: Throwable) {
+                            shimmerFrameLayout.visibility = View.GONE
+                            shimmerFrameLayout.stopShimmer()
                             Log.d("SUB_CATE_ERROR+$category", t.message.toString())
                             layout.visibility = View.GONE
                         }
 
                     })
             } catch (e: Exception) {
+                shimmerFrameLayout.visibility = View.GONE
+                shimmerFrameLayout.stopShimmer()
                 Log.d("SUB_CATE_ERROR+$category", e.message.toString())
                 layout.visibility = View.GONE
             }
@@ -307,8 +465,7 @@ class Home : Fragment() {
                     )
                 )
                 val params = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT
                 )
                 params.setMargins(8, 0, 8, 0)
                 binding.dotsIndicatorHomeScreen.addView(this, params)

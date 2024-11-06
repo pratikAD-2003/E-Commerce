@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.pycreation.e_commerce.R
+import com.pycreation.e_commerce.consumer.dashboard.ConsumerDashboard
 import com.pycreation.e_commerce.consumer.orders.adaptors.OrderedProductsAdapter
 import com.pycreation.e_commerce.consumer.orders.res.Order
 import com.pycreation.e_commerce.databinding.FragmentOrderItemDetailsBinding
@@ -44,6 +45,7 @@ class OrderItemDetails : Fragment() {
             requireActivity().supportFragmentManager.popBackStack()
         }
         setupActionBar()
+        checkInternetConnection()
         val gson = Gson()
         currentOrder = gson.fromJson(arguments?.getString("data"), Order::class.java)
         binding.deliveredAddressOrderedDetails.text = currentOrder.deliveryAddress
@@ -66,9 +68,13 @@ class OrderItemDetails : Fragment() {
         }
         binding.orderedProductsRecyclerviewOrderItemDetails.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        val adapter = OrderedProductsAdapter(requireContext(), currentOrder.items)
+        val adapter =
+            OrderedProductsAdapter(requireContext(), currentOrder.items, currentOrder.orderStatus)
         binding.orderedProductsRecyclerviewOrderItemDetails.adapter = adapter
 
+        binding.retryOrderDetailsBtn.setOnClickListener {
+
+        }
         setUpOrderStatus()
         return binding.root
     }
@@ -84,7 +90,17 @@ class OrderItemDetails : Fragment() {
             }
     }
 
-    private fun setUpOrderStatus(){
+    private fun checkInternetConnection() {
+        if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
+            binding.internetLyOrderDetailsPage.visibility = View.GONE
+            binding.orderDetailsLayout.visibility = View.VISIBLE
+        } else {
+            binding.internetLyOrderDetailsPage.visibility = View.VISIBLE
+            binding.orderDetailsLayout.visibility = View.GONE
+        }
+    }
+
+    private fun setUpOrderStatus() {
         binding.ordersStatusItem.text = currentOrder.orderStatus
         binding.paymentStatusOrderDetails.text = currentOrder.paymentStatus
 
@@ -94,45 +110,45 @@ class OrderItemDetails : Fragment() {
             }
 
             "Shipped" -> {
-                 binding.shippedOrderLineItem.setBackgroundColor( resources.getColor(R.color.orange))
-                 binding.shippedCircleItem.setImageResource(R.drawable.oval_red)
-                 binding.shippedTextItem.setTextColor( resources.getColor(R.color.orange))
-                 binding.shippedIconItem.imageTintList =
-                    ColorStateList.valueOf( resources.getColor(R.color.orange))
+                binding.shippedOrderLineItem.setBackgroundColor(resources.getColor(R.color.orange))
+                binding.shippedCircleItem.setImageResource(R.drawable.oval_red)
+                binding.shippedTextItem.setTextColor(resources.getColor(R.color.orange))
+                binding.shippedIconItem.imageTintList =
+                    ColorStateList.valueOf(resources.getColor(R.color.orange))
             }
 
             "Out of Delivery" -> {
-                 binding.shippedOrderLineItem.setBackgroundColor( resources.getColor(R.color.orange))
-                 binding.shippedCircleItem.setImageResource(R.drawable.oval_red)
-                 binding.shippedTextItem.setTextColor( resources.getColor(R.color.orange))
-                 binding.shippedIconItem.imageTintList =
-                    ColorStateList.valueOf( resources.getColor(R.color.orange))
+                binding.shippedOrderLineItem.setBackgroundColor(resources.getColor(R.color.orange))
+                binding.shippedCircleItem.setImageResource(R.drawable.oval_red)
+                binding.shippedTextItem.setTextColor(resources.getColor(R.color.orange))
+                binding.shippedIconItem.imageTintList =
+                    ColorStateList.valueOf(resources.getColor(R.color.orange))
 
-                 binding.outOfOrderLineItem.setBackgroundColor( resources.getColor(R.color.orange))
-                 binding.outOfDeliveryCircleItem.setImageResource(R.drawable.oval_red)
-                 binding.outOfDeliveryTextItem.setTextColor( resources.getColor(R.color.orange))
-                 binding.outOfDeliveryIconItem.imageTintList =
-                    ColorStateList.valueOf( resources.getColor(R.color.orange))
+                binding.outOfOrderLineItem.setBackgroundColor(resources.getColor(R.color.orange))
+                binding.outOfDeliveryCircleItem.setImageResource(R.drawable.oval_red)
+                binding.outOfDeliveryTextItem.setTextColor(resources.getColor(R.color.orange))
+                binding.outOfDeliveryIconItem.imageTintList =
+                    ColorStateList.valueOf(resources.getColor(R.color.orange))
             }
 
             "Delivered" -> {
-                 binding.shippedOrderLineItem.setBackgroundColor( resources.getColor(R.color.orange))
-                 binding.shippedCircleItem.setImageResource(R.drawable.oval_red)
-                 binding.shippedTextItem.setTextColor( resources.getColor(R.color.orange))
-                 binding.shippedIconItem.imageTintList =
-                    ColorStateList.valueOf( resources.getColor(R.color.orange))
+                binding.shippedOrderLineItem.setBackgroundColor(resources.getColor(R.color.orange))
+                binding.shippedCircleItem.setImageResource(R.drawable.oval_red)
+                binding.shippedTextItem.setTextColor(resources.getColor(R.color.orange))
+                binding.shippedIconItem.imageTintList =
+                    ColorStateList.valueOf(resources.getColor(R.color.orange))
 
-                 binding.outOfOrderLineItem.setBackgroundColor( resources.getColor(R.color.orange))
-                 binding.outOfDeliveryCircleItem.setImageResource(R.drawable.oval_red)
-                 binding.outOfDeliveryTextItem.setTextColor( resources.getColor(R.color.orange))
-                 binding.outOfDeliveryIconItem.imageTintList =
-                    ColorStateList.valueOf( resources.getColor(R.color.orange))
+                binding.outOfOrderLineItem.setBackgroundColor(resources.getColor(R.color.orange))
+                binding.outOfDeliveryCircleItem.setImageResource(R.drawable.oval_red)
+                binding.outOfDeliveryTextItem.setTextColor(resources.getColor(R.color.orange))
+                binding.outOfDeliveryIconItem.imageTintList =
+                    ColorStateList.valueOf(resources.getColor(R.color.orange))
 
-                 binding.deliveredLineItem.setBackgroundColor( resources.getColor(R.color.orange))
-                 binding.deliveredCircleItem.setImageResource(R.drawable.oval_red)
-                 binding.deliveryTextItem.setTextColor( resources.getColor(R.color.orange))
-                 binding.deliveredIconItem.imageTintList =
-                    ColorStateList.valueOf( resources.getColor(R.color.orange))
+                binding.deliveredLineItem.setBackgroundColor(resources.getColor(R.color.orange))
+                binding.deliveredCircleItem.setImageResource(R.drawable.oval_red)
+                binding.deliveryTextItem.setTextColor(resources.getColor(R.color.orange))
+                binding.deliveredIconItem.imageTintList =
+                    ColorStateList.valueOf(resources.getColor(R.color.orange))
             }
 
             "Canceled" -> {
@@ -140,7 +156,7 @@ class OrderItemDetails : Fragment() {
             }
         }
     }
-    
+
     private fun formatNumberWithCommas(number: Int): String {
         val formatter = NumberFormat.getInstance(Locale("en", "IN"))
         return formatter.format(number)

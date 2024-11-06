@@ -61,7 +61,7 @@ class PlacedOrder : Fragment() {
             requireActivity().supportFragmentManager.popBackStack()
         }
         setupActionBar()
-
+        checkInternetConnection()
         binding.cartProductsRecyclerviewPlacedOrder.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         getAddressList()
@@ -73,6 +73,10 @@ class PlacedOrder : Fragment() {
 
         binding.changeAddressBtnAddresses.setOnClickListener {
             (activity as ConsumerDashboard?)?.navigateTo(AddressList())
+        }
+
+        binding.retryPlacedOrderBtn.setOnClickListener {
+
         }
 
         binding.checkoutPlacedOrder.setOnClickListener {
@@ -99,6 +103,16 @@ class PlacedOrder : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun checkInternetConnection() {
+        if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
+            binding.internetLyPlacedOrderList.visibility = View.GONE
+            binding.placedOrderLayout.visibility = View.VISIBLE
+        } else {
+            binding.internetLyPlacedOrderList.visibility = View.VISIBLE
+            binding.placedOrderLayout.visibility = View.GONE
+        }
     }
 
     private fun setupActionBar() {
@@ -184,7 +198,7 @@ class PlacedOrder : Fragment() {
                             call: Call<CartItemResModel?>,
                             response: Response<CartItemResModel?>
                         ) {
-                            if (response.isSuccessful) {
+                            if (isAdded && response.isSuccessful) {
 //                                binding.cartProductShimmerCartFrag.visibility = View.GONE
 //                                binding.cartProductShimmerCartFrag.stopShimmer()
                                 response.body()?.let { cartItemResModel ->

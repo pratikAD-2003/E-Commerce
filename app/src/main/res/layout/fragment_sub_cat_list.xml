@@ -17,6 +17,32 @@
         app:title="Payment Options"
         app:titleTextColor="@color/white" />
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/subCateShimmerLayoutSubCatList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:orientation="vertical">
+
+            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+
+            <include layout="@layout/home_page_sub_cat_items_ly_shimmer_item" />
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
     <RelativeLayout
         android:id="@+id/internetLySubCatList"
         android:layout_width="match_parent"

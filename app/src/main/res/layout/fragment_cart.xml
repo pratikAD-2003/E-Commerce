@@ -23,9 +23,9 @@
 
     <RelativeLayout
         android:id="@+id/internetLyCart"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,8 +84,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:gravity="center_vertical"
                 android:layout_marginEnd="@dimen/_4sdp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -102,8 +102,8 @@
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginStart="@dimen/_4sdp"
                     android:contentDescription="TODO"
-                    app:tint="@color/black"
-                    android:src="@drawable/baseline_restart_alt_24" />
+                    android:src="@drawable/baseline_restart_alt_24"
+                    app:tint="@color/black" />
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>
@@ -162,7 +162,7 @@
             android:id="@+id/cartRecyclerviewCartFrag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/proceedToCheckoutBtnCartFrag"
+            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/_5sdp"

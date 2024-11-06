@@ -103,7 +103,8 @@ class ConsumerDashboard : MyWidgets(), PaymentResultListener {
     fun onCategoryClicked(view: View) {
         val bundle = Bundle()
         bundle.putString("subCategory", view.tag.toString())
-        val fragment = SubCategory()
+//        val fragment = SubCategory()
+        val fragment = SubCatList()
         fragment.arguments = bundle
 
         supportFragmentManager.beginTransaction()
