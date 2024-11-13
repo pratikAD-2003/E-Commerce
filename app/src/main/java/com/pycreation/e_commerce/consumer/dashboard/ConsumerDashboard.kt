@@ -127,12 +127,12 @@ class ConsumerDashboard : MyWidgets(), PaymentResultListener {
 
     override fun onPaymentSuccess(p0: String?) {
         isPaymentSuccess = true
-        Log.d("PAYMENT_Status_main", "Success ${p0.toString()}")
+//        Log.d("PAYMENT_Status_main", "Success ${p0.toString()}")
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
         isPaymentSuccess = false
-        Log.d("PAYMENT_Status_main", "Failed ${p1.toString()}")
+//        Log.d("PAYMENT_Status_main", "Failed ${p1.toString()}")
     }
 
     fun checkPaymentStatus(): Boolean {

@@ -3,20 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/orange"
     tools:context=".onboarding.On2">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top|center_horizontal"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/_30sdp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/black"
-        android:text="2"
-        android:gravity="center"
-        android:textSize="@dimen/_25ssp"
-        android:layout_height="wrap_content"/>
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginBottom="@dimen/_100sdp"
+            android:text="Big savings, bigger smiles. Dive into a world of discounts!"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+
+        <ImageView
+            android:layout_width="@dimen/_190sdp"
+            android:contentDescription="TODO"
+            android:src="@drawable/onboarding_widget_3"
+            android:layout_height="@dimen/_190sdp"/>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,7 +48,7 @@
         <TextView
             android:id="@+id/on2_prev"
             android:layout_width="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="Previous"
             android:layout_alignParentStart="true"
             android:textSize="@dimen/_20ssp"
@@ -40,7 +57,7 @@
         <TextView
             android:id="@+id/on2_next"
             android:layout_width="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="Next"
             android:layout_alignParentEnd="true"
             android:textSize="@dimen/_20ssp"

@@ -162,4 +162,32 @@ object Constants {
     val jewelryCat = listOf(
         "Gold & Diamond Jewelry", "Fashion Jewelry", "Precious & Semi-Precious Stones"
     )
+
+    // explore page
+    const val PHONES_CATEGORY = "phones"
+    val BRAND_WISE_PHONES = listOf(
+        "iPhone",
+        "Motorola",
+        "Samsung",
+        "Pixel",
+        "Vivo",
+        "Realme",
+        "Xiaomi",
+        "Oppo",
+        "Infinix",
+        "Nothing"
+    )
+
+    const val LAPTOPS_CATEGORY = "laptops"
+    val BRAND_WISE_LAPTOPS = listOf(
+        "Samsung",
+        "Acer",
+        "Lenovo",
+        "Asus",
+        "Hp",
+        "MSI",
+        "Dell",
+        "Infinix",
+        "Zebronics"
+    )
 }

@@ -317,10 +317,12 @@ class Home : Fragment() {
                                         Handler(Looper.getMainLooper()).postDelayed({
                                             shimmerFrameLayout.visibility = View.GONE
                                             shimmerFrameLayout.stopShimmer()
-                                            val adapter = SubCategoryHomeAdapter(
-                                                requireContext(), response.body()!!
-                                            )
-                                            recyclerView.adapter = adapter
+                                            if (isAdded) {
+                                                val adapter = SubCategoryHomeAdapter(
+                                                    requireContext(), response.body()!!
+                                                )
+                                                recyclerView.adapter = adapter
+                                            }
                                         }, 1000)
                                     } else {
                                         shimmerFrameLayout.visibility = View.GONE

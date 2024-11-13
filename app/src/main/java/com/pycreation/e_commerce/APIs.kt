@@ -57,4 +57,5 @@ object APIs {
 
     // sub category
     const val GET_SUB_CATEGORIES = "/getAllSubCategories/{category}"
+
 }

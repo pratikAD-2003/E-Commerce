@@ -10,15 +10,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/fdsfbhjsfmdsfs"
+        android:layout_alignParentStart="true"
+        android:gravity="top|center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="Ready to explore? Choose your path to get started"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp" />
+
+        <ImageView
+            android:layout_width="@dimen/_190sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_height="@dimen/_190sdp"
+            android:src="@drawable/buyer"
+            android:contentDescription="TODO" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fdsfbhjsfmdsfs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/customerRoleS"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
             android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_15sdp"
             app:cardBackgroundColor="@color/orange"

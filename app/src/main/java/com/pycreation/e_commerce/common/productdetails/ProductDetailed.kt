@@ -26,6 +26,8 @@ import com.pycreation.e_commerce.common.adaptors.ImageSliderAdapter
 import com.pycreation.e_commerce.common.reviews.adaptors.ReviewAdapter
 import com.pycreation.e_commerce.common.reviews.models.ReviewModelItem
 import com.pycreation.e_commerce.consumer.addToCart.request.AddToCartResModel
+import com.pycreation.e_commerce.consumer.address.adaptors.AddressAdapter
+import com.pycreation.e_commerce.consumer.address.model.res.AddressListModelResModel
 import com.pycreation.e_commerce.consumer.dashboard.ConsumerDashboard
 import com.pycreation.e_commerce.consumer.dashboard.tabs.Cart
 import com.pycreation.e_commerce.consumer.responseModels.RegisterResponse
@@ -71,6 +73,7 @@ class ProductDetailed : Fragment() {
         checkAlreadySavedProduct()
         checkAlreadyProductInCart()
         setProductData()
+        getAddressList()
         getProductReviews(productDetail.productUid)
         getSpecificationsById(productDetail.productUid)
         getBySellerID(productDetail.sellerUid)
@@ -98,6 +101,10 @@ class ProductDetailed : Fragment() {
                 addToCartProduct(productDetail.productUid)
             }
         }
+
+        binding.changeAddressProductDetails.setOnClickListener {
+
+        }
         return binding.root
     }
 
@@ -110,6 +117,54 @@ class ProductDetailed : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun getAddressList() {
+        val apiService = ApiClient.getApiService()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                apiService?.getAddresses(UserSharedPref(requireContext()).getToken())
+                    ?.enqueue(object : Callback<AddressListModelResModel?> {
+                        override fun onResponse(
+                            call: Call<AddressListModelResModel?>,
+                            response: Response<AddressListModelResModel?>
+                        ) {
+                            if (response.isSuccessful) {
+
+                                Log.d("ADDRESS_LIST", response.body().toString())
+                                if (response.body() != null) {
+                                    if (response.body()!!.size != 0) {
+                                        binding.savedAddressProDe.text =
+                                            response.body()!![0].fullName + " " + response.body()!![0].area + " " + response.body()!![0].state + " " + response.body()!![0].city + " " + response.body()!![0].pinCode
+                                        binding.changeAddressTextProDe.text = "CHANGE"
+                                    } else {
+                                        binding.savedAddressProDe.text = "Click here to add new Address"
+                                        binding.changeAddressTextProDe.text = "ADD"
+                                    }
+                                }
+                            } else {
+                                binding.savedAddressProDe.text = "Click here to add new Address"
+                                binding.changeAddressTextProDe.text = "ADD"
+                                Log.d("ADDRESS_LIST", response.errorBody().toString())
+                            }
+                        }
+
+                        override fun onFailure(
+                            call: Call<AddressListModelResModel?>,
+                            t: Throwable
+                        ) {
+                            binding.savedAddressProDe.text = "Click here to add new Address"
+                            binding.changeAddressTextProDe.text = "ADD"
+                            Log.d("ADDRESS_LIST", t.message.toString())
+                        }
+
+                    })
+            } catch (e: Exception) {
+                binding.savedAddressProDe.text = "Click here to add new Address"
+                binding.changeAddressTextProDe.text = "ADD"
+                Log.d("ADDRESS_LIST", e.message.toString())
+            }
+        }
     }
 
     private fun setProductData() {

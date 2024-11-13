@@ -81,7 +81,7 @@ class ProductList : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            if (arguments?.getString("sub_Category") != null) {
+            if (arguments?.getString("sub_Category") != null || arguments?.getString("by_brand") != null) {
                 (activity as ConsumerDashboard?)?.setHomeIcon()
                 (activity as ConsumerDashboard?)?.navigateToWithoutStackTrace(Home())
             } else {
@@ -90,7 +90,7 @@ class ProductList : Fragment() {
         }
 
         binding.backFromProductList.setOnClickListener {
-            if (arguments?.getString("sub_Category") != null) {
+            if (arguments?.getString("sub_Category") != null || arguments?.getString("by_brand") != null) {
                 (activity as ConsumerDashboard?)?.setHomeIcon()
                 (activity as ConsumerDashboard?)?.navigateToWithoutStackTrace(Home())
             } else {
@@ -119,6 +119,9 @@ class ProductList : Fragment() {
                 productCategory = arguments?.getString("category")!!
                 binding.keywordProductList.setText(productCategory)
             }
+            if (arguments?.getString("brand")!=null){
+                brand = arguments?.getString("brand")!!
+            }
             getProductFilter()
         }
         if (arguments?.getString("keyword") != null) {
@@ -131,6 +134,14 @@ class ProductList : Fragment() {
         if (arguments?.getString("sub_Category") != null) {
             if (arguments?.getString("sub_Category")!!.isNotEmpty()) {
                 subCategory = arguments?.getString("sub_Category")!!
+                binding.keywordProductList.setText(subCategory)
+                getProductFilter()
+            }
+        }
+        if (arguments?.getString("by_brand") != null) {
+            if (arguments?.getString("by_brand")!!.isNotEmpty()) {
+                subCategory = arguments?.getString("by_brand_cat")!!
+                brand = arguments?.getString("by_brand")!!
                 binding.keywordProductList.setText(subCategory)
                 getProductFilter()
             }
@@ -176,8 +187,12 @@ class ProductList : Fragment() {
             if (arguments?.getString("sub_Category") != null) {
                 bundle.putString("sub_Category", subCategory)
             }
+            if (arguments?.getString("by_brand") != null) {
+                bundle.putString("by_brand", brand)
+                bundle.putString("sub_Category", subCategory)
+            }
             val filterPage = FilterPage()
-            if (arguments?.getString("sub_Category") != null) {
+            if (arguments?.getString("sub_Category") != null || arguments?.getString("by_brand") != null) {
                 bundle.putString("from", "consumer")
                 filterPage.arguments = bundle
                 (activity as ConsumerDashboard?)?.navigateTo(filterPage)
@@ -234,7 +249,7 @@ class ProductList : Fragment() {
     }
 
     private fun checkInternetConnection() {
-        if (arguments?.getString("sub_Category") != null) {
+        if (arguments?.getString("sub_Category") != null || arguments?.getString("by_brand") != null) {
             if ((activity as ConsumerDashboard?)?.isNetworkAvailable() == true) {
                 binding.internetLyProductList.visibility = View.GONE
                 binding.productListLayout.visibility = View.VISIBLE

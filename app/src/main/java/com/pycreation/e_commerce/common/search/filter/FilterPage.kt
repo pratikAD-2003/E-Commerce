@@ -28,7 +28,7 @@ class FilterPage : Fragment() {
 
     private lateinit var binding: FragmentFilterPageBinding
 
-    private val brand: String = "null"
+    private var brand: String = "null"
     private var minPrice: Int = -1
     private var maxPrice: Int = -1
     private var minRating: Int = -1
@@ -59,7 +59,10 @@ class FilterPage : Fragment() {
         if (arguments?.getString("sub_Category") != null) {
             subCategory = arguments?.getString("sub_Category")!!
         }
-
+        if (arguments?.getString("by_brand") != null){
+            brand = arguments?.getString("by_brand")!!
+            subCategory = arguments?.getString("sub_Category")!!
+        }
         binding.backFromFilterPage.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
@@ -78,6 +81,7 @@ class FilterPage : Fragment() {
             bundle.putString("priceRangeMaxFill", maxPrice.toString())
             bundle.putString("rating", minRating.toString())
             bundle.putString("category", productCategory)
+            bundle.putString("brand",if(brand!="null") brand else "null")
             Log.d(
                 "FILTERED_PAGE_DATA",
                 "Price Min: $minPrice, Price Max: $maxPrice, Rating: $minRating, Category: $productCategory"
