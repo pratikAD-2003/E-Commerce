@@ -188,7 +188,7 @@ class ProductDetailed : Fragment() {
                 "Delivery Charges - ₹" + productDetail.deliveryCharges.toString()
         }
         if (!productDetail.cashOnDelivery) {
-            binding.codLyProDe.visibility = View.INVISIBLE
+            binding.codLyProDe.text = "Cash on Delivery\nNot Available"
         }
         binding.brandNameProDe.text = productDetail.brand
         binding.warrantyProDe.text = productDetail.warranty
@@ -495,25 +495,29 @@ class ProductDetailed : Fragment() {
                         if (response.isSuccessful) {
                             try {
                                 if (response.body() != null) {
+//                                    Log.d("Specs_Details", response.body()?.get(0)!!.specifications[4].toString())
                                     binding.specsShimmerEffectProDe.stopShimmer()
                                     binding.specsShimmerEffectProDe.visibility = View.GONE
                                     val productSpecs = response.body()?.get(0)
                                     if (productSpecs!!.specifications.isEmpty()) {
                                         Log.d("Specs_Error", "not found")
                                     }
-                                    binding.key1ProDe.text = productSpecs.specifications[0].key
-                                    binding.key2ProDe.text = productSpecs.specifications[1].key
-                                    binding.key3ProDe.text = productSpecs.specifications[2].key
-                                    binding.key4ProDe.text = productSpecs.specifications[3].key
-                                    binding.key5ProDe.text = productSpecs.specifications[4].key
-                                    binding.key6ProDe.text = productSpecs.specifications[5].key
+                                    val specifications = response.body()!![0]
+//                                    Log.d("Specs_Details", specifications.specifications[4].key)
 
-                                    binding.value1ProDe.text = productSpecs.specifications[0].value
-                                    binding.value2ProDe.text = productSpecs.specifications[1].value
-                                    binding.value3ProDe.text = productSpecs.specifications[2].value
-                                    binding.value4ProDe.text = productSpecs.specifications[3].value
-                                    binding.value5ProDe.text = productSpecs.specifications[4].value
-                                    binding.value6ProDe.text = productSpecs.specifications[5].value
+                                    binding.key1ProDe.text = specifications.specifications[0].key
+                                    binding.key2ProDe.text = specifications.specifications[1].key
+                                    binding.key3ProDe.text = specifications.specifications[2].key
+                                    binding.key4ProDe.text = specifications.specifications[3].key
+                                    binding.key55ProDe.text = specifications.specifications[4].key
+                                    binding.key66ProDe.text = specifications.specifications[5].key
+
+                                    binding.value1ProDe.text = specifications.specifications[0].value
+                                    binding.value2ProDe.text = specifications.specifications[1].value
+                                    binding.value3ProDe.text = specifications.specifications[2].value
+                                    binding.value4ProDe.text = specifications.specifications[3].value
+                                    binding.value55ProDe.text = specifications.specifications[4].value
+                                    binding.value66ProDe.text = specifications.specifications[5].value
 
                                     binding.productSpecsLayoutProDe.visibility = View.VISIBLE
                                 } else {

@@ -283,12 +283,17 @@ class PartnerRegister : Fragment() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun requestPermissions(checkOne: Boolean) {
         val permissions = mutableListOf<String>()
+
+        // For Android 13+ (API 33 and above)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             permissions.add(Manifest.permission.READ_MEDIA_IMAGES)
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        // For Android 10 - 12 (API 29 - 32)
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE)
-        } else {
+        }
+        // For Android 6 - 9 (API 23 - 28)
+        else {
             permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE)
             permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }

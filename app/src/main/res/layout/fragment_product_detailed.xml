@@ -310,6 +310,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/codIconProDe"
                             android:layout_width="@dimen/_18sdp"
                             android:layout_height="@dimen/_18sdp"
                             android:contentDescription="TODO"
@@ -651,7 +652,6 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_weight="1"
                             android:fontFamily="@font/arial"
-                            android:text="Processor"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
@@ -663,7 +663,6 @@
                             android:layout_weight="1"
                             android:fontFamily="@font/arial"
                             android:gravity="center"
-                            android:text="Ryzen 5 5600H"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11ssp" />
                     </LinearLayout>
@@ -675,25 +674,23 @@
                         android:weightSum="2">
 
                         <TextView
-                            android:id="@+id/key5ProDe"
+                            android:id="@+id/key55ProDe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_weight="1"
                             android:fontFamily="@font/arial"
-                            android:text="Ram"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/value5ProDe"
+                            android:id="@+id/value55ProDe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/arial"
                             android:gravity="center"
-                            android:text="8 gb "
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11ssp" />
                     </LinearLayout>
@@ -705,25 +702,23 @@
                         android:weightSum="2">
 
                         <TextView
-                            android:id="@+id/key6ProDe"
+                            android:id="@+id/key66ProDe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_weight="1"
                             android:fontFamily="@font/arial"
-                            android:text="Storage"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/value6ProDe"
+                            android:id="@+id/value66ProDe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/arial"
                             android:gravity="center"
-                            android:text="512 gb ssd"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11ssp" />
                     </LinearLayout>

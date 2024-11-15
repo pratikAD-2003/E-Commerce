@@ -166,7 +166,7 @@ object Constants {
     // explore page
     const val PHONES_CATEGORY = "phones"
     val BRAND_WISE_PHONES = listOf(
-        "iPhone",
+        "Apple",
         "Motorola",
         "Samsung",
         "Pixel",

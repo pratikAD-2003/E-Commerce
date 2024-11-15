@@ -330,6 +330,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
                     android:elevation="@dimen/_5sdp"
                     app:cardCornerRadius="@dimen/_10sdp">
 
@@ -343,6 +344,7 @@
                             android:layout_width="@dimen/_20sdp"
                             android:layout_height="@dimen/_20sdp"
                             android:layout_gravity="end"
+                            android:contentDescription="TODO"
                             android:src="@drawable/baseline_cancel_24"
                             android:visibility="gone" />
 
@@ -375,6 +377,7 @@
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
                     android:elevation="@dimen/_5sdp"
                     app:cardCornerRadius="@dimen/_10sdp">
 
@@ -576,6 +579,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="@dimen/_35sdp"
+                        app:cardBackgroundColor="@color/white"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginEnd="@dimen/_5sdp">
 
@@ -596,6 +600,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="@dimen/_35sdp"
+                        app:cardBackgroundColor="@color/white"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginEnd="@dimen/_5sdp">
 
@@ -616,6 +621,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="@dimen/_35sdp"
+                        app:cardBackgroundColor="@color/white"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginEnd="@dimen/_5sdp">
 
@@ -636,6 +642,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="@dimen/_35sdp"
+                        app:cardBackgroundColor="@color/white"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginEnd="@dimen/_5sdp">
 
@@ -656,6 +663,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="@dimen/_35sdp"
+                        app:cardBackgroundColor="@color/white"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginEnd="@dimen/_5sdp">
 
@@ -676,6 +684,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="@dimen/_35sdp"
+                        app:cardBackgroundColor="@color/white"
                         android:layout_height="@dimen/_35sdp">
 
                         <EditText
@@ -721,6 +730,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:buttonTint="@color/red"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="Accept all Terms &amp; Conditions!"

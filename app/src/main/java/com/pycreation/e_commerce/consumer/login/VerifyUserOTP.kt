@@ -1,5 +1,6 @@
 package com.pycreation.e_commerce.consumer.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -136,11 +137,20 @@ class VerifyUserOTP : Fragment() {
                         ) {
                             if (response.isSuccessful) {
                                 myActivity.dismissDialog()
+                                UserSharedPref(requireContext()).saveLoginStatus(
+                                    "user",
+                                    response.body()!!.token,
+                                    docUploaded = true,
+                                    isAddressAdded =  false
+                                )
                                 Toast.makeText(
-                                    requireContext(),
-                                    "Registered Successfully!",
-                                    Toast.LENGTH_SHORT
+                                        requireContext(),
+                                "Registered Successfully!",
+                                Toast.LENGTH_SHORT
                                 ).show()
+                                val intent = Intent(requireContext(), ConsumerDashboard::class.java)
+                                myActivity.startActivity(intent)
+                                myActivity.finish()
                             } else {
                                 Log.e(
                                     "LOGIN_ERROR",

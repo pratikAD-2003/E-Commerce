@@ -47,6 +47,7 @@
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="#80000000"
                 app:cursorColor="#80000000"
+                app:startIconTint="@color/grey"
                 app:startIconDrawable="@drawable/baseline_email_24"
                 app:hintTextColor="@color/black">
 
@@ -72,6 +73,7 @@
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="#80000000"
                 app:cursorColor="#80000000"
+                app:startIconTint="@color/grey"
                 app:startIconDrawable="@drawable/baseline_lock_24"
                 app:hintTextColor="@color/black">
 
